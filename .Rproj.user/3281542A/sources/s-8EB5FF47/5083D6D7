@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596617182209.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1053868986",
+    "id" : "5083D6D7",
+    "lastKnownWriteTime" : 1596618675,
+    "last_content_update" : 1596618675642,
+    "path" : "C:/Users/Ralf Martin/Dropbox/WWW/memonomicslab/_site.yml",
+    "project_path" : "_site.yml",
+    "properties" : {
+        "cursorPosition" : "12,25",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "yaml"
+}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596617181721.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2913040714",
+    "id" : "CF0F78F2",
+    "lastKnownWriteTime" : 1596618011,
+    "last_content_update" : 1596618011781,
+    "path" : "C:/Users/Ralf Martin/Dropbox/WWW/memonomicslab/about.Rmd",
+    "project_path" : "about.Rmd",
+    "properties" : {
+        "cursorPosition" : "12,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
