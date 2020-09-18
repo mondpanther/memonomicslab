@@ -1322,8 +1322,8 @@
     gtag('config', 'UA-3928947-4');
   </script>
 
-<p>Last update: September 18 , 2020 - 09:31</p>
-<p>The coronavirus pandemic has changed everything overnight. Unfortunately, as the genetic sequence of the virus started to make its deadly journey through bodies around the world, in parallel a memetic sequence emerged in the minds of some people: the idea that covid19 pandemic is not real and a hoax. Indeed, the worry is that the two infections exist in a symbiotic relationship with one helping to advance the survival and spread of the other. Here we report on our ongoing efforts to map the spread of memetic infection using Twitter. Since March 23 we have been sampling tweets mentioning the terms “corona” and/or “covid”. We have also been sampling timelines of twitter users tweeting about these terms allowing us to go back further in time. Currently, we have collected 46.79 million tweets.</p>
+<p>Last update: September 18 , 2020 - 09:55</p>
+<p>The coronavirus pandemic has changed everything overnight. Unfortunately, as the genetic sequence of the virus started to make its deadly journey through bodies around the world, in parallel a memetic sequence emerged in the minds of some people: the idea that COVID19 pandemic is not real and a hoax. Indeed, the worry is that the two infections exist in a symbiotic relationship with one helping to advance the survival and spread of the other. Here we report on our ongoing efforts to map the spread of memetic infection using Twitter. Since March 23 we have been sampling tweets mentioning the terms “corona” and/or “covid”. We have also been sampling timelines of twitter users tweeting about these terms allowing us to go back further in time. Currently, we have collected 46.79 million tweets.</p>
 <p>How bad is the hoax infection and is it getting better or worse? To identify tweeters believing in the hoax (or promoting the hoax idea) we look for tweets with one of the following hastags:</p>
 <ul>
 <li>“#hoax”</li>
@@ -1331,34 +1331,23 @@
 <li>“#covidhoax”</li>
 </ul>
 <p>Using hashtags instead of string searches of the same terms provides a good distinction between tweets who display support for hoaxsim vs tweets criticising hoaxism. Note that this is likely a conservative way of counting hoaxist tweets and in reality a larger fraction of tweets are from people supporting hoaxist ideas.</p>
-<p>Below is a time series plot of the share of hoaxist tweets over our sample period.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>] we report separate series for the Us and UK. Assigning location to tweets is notoriously difficult as most users have switch off detailed location tracking. In the figure below we base location on the analysis of a free text field where users can write something about their whereabouts. In many cases this refers to known areas although the detail varies (e.g. London, UK vs the Universe). Often it also involves phantasy locations (e.g. Walhalla). Hence, our “other” category might include tweeters from either the UK or Us who have chosen not to reveal their location.</p>
-<p>Note that towards the begining of the sample period the share of hoax tweets in all covid related tweets is less than 0.5%. However, the weekend around the 28th of March saw a major outbreak of Hoaxism that was particularly bad in the UK. This has subsided somewhat come March 30. The whole sample trend would suggest that hoaxism is fairly stable and not subsiding, although there seems to be a declining trend for the last couple of days.</p>
+<p>Below is a time series plot of the share of hoaxist tweets over our sample period.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>] we report separate series for the US and UK. Assigning location to tweets is notoriously difficult as most users have switch off detailed location tracking. In the figure below we base location on the analysis of a free text field where users can write something about their whereabouts. In many cases this refers to known areas although the detail varies (e.g. London, UK vs the Universe). Often it also involves phantasy locations (e.g. Walhalla). Hence, our “other” category might include tweeters from either the UK or Us who have chosen not to reveal their location.</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>
  [1] &quot;X&quot;           &quot;sixh&quot;        &quot;country&quot;     &quot;tweets&quot;     
  [5] &quot;igtweets&quot;    &quot;hoaxsh&quot;      &quot;date&quot;        &quot;cumtweets&quot;  
  [9] &quot;cumigtweets&quot; &quot;cumhoaxsh&quot;  </code></pre>
 </div>
+<h2 id="daily-share-of-hoax-tweets-in-total-covid-related-tweets">Daily share of hoax tweets in total covid related tweets</h2>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-library(scales)
-tsplot=ggplot(scomb, aes(x = date,y=hoaxsh*100,color=country  )  )+geom_line()  + theme_minimal() + xlab(&quot;Time&quot;) +
-     ylab(&quot;Share of hoax tweets [%]&quot;)  + xlab(&quot;Days&quot;) +
-     scale_x_date(breaks = date_breaks(&quot;1 months&quot;),labels = date_format(&quot;%m/%y&quot;));tsplot</code></pre>
 <p><img src="hoaxism_files/figure-html5/plot%20daily-1.png" width="624" /></p>
 </div>
+<h2 id="weekly-share-of-hoax-tweets-in-total-covid-related-tweets">Weekly share of hoax tweets in total covid related tweets</h2>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-tsplot=ggplot(scombw, aes(x = week,y=hoaxsh*100,color=country  )  )+geom_line()  + theme_minimal() + xlab(&quot;Time&quot;) +
-     ylab(&quot;Share of hoax tweets [%]&quot;)+  xlab(&quot;Weeks&quot;)+
-     scale_x_date(breaks = date_breaks(&quot;1 months&quot;),labels = date_format(&quot;%m/%y&quot;));tsplot</code></pre>
 <p><img src="hoaxism_files/figure-html5/plot%20weekly-1.png" width="624" /></p>
 </div>
+<h2 id="cumulative-share-of-hoax-tweets-in-total-covid-related-tweets">Cumulative share of hoax tweets in total covid related tweets</h2>
 <div class="layout-chunk" data-layout="l-body">
-<pre class="r"><code>
-tsplot=ggplot(scomb, aes(x = date,y=cumhoaxsh*100,color=country  )  )+geom_line()  + theme_minimal() + xlab(&quot;Time&quot;) +
-     ylab(&quot;Cumulative Share of hoax tweets [%]&quot;) + xlab(&quot;Days&quot;) +
-     scale_x_date(breaks = date_breaks(&quot;1 months&quot;),labels = date_format(&quot;%m/%y&quot;));tsplot</code></pre>
 <p><img src="hoaxism_files/figure-html5/plot%20cumulative-1.png" width="624" /></p>
 </div>
 <section class="footnotes" role="doc-endnotes">
