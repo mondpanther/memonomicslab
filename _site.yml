@@ -3,6 +3,7 @@ title: "Memonomics Lab"
 description: |
   Using social media data to find answers in economics and current affairs.
 output_dir: "docs"
+include: ["slides","code"]
 navbar:
   right:
     - text: "Home"

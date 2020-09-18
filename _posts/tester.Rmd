@@ -1,12 +1,9 @@
 ---
-title: "Another"
+title: "Hoaxism is still going strong"
 description: |
   A new article created using the Distill format.
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
+  - name: Ralf Martin
 date: "`r Sys.Date()`"
 output: distill::distill_article
   
@@ -16,9 +13,6 @@ output: distill::distill_article
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web. 
-
-Learn more about using Distill for R Markdown at <https://rstudio.github.io/distill>.
 
 
 

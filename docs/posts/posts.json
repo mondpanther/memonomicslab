@@ -1,19 +1,19 @@
 [
   {
     "path": "posts/",
-    "title": "Another",
+    "title": "Hoaxism is still going strong",
     "description": "A new article created using the Distill format.",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "Ralf Martin",
+        "url": {}
       }
     ],
-    "date": "2020-08-29",
+    "date": "2020-09-18",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-08-29T12:04:34+01:00",
-    "input_file": {}
+    "last_modified": "2020-09-18T15:17:59+01:00",
+    "input_file": "tester.utf8.md"
   },
   {
     "path": "posts/welcome/",
