@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/",
+    "title": "Another",
+    "description": "A new article created using the Distill format.",
+    "author": [
+      {
+        "name": "Nora Jones",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-08-29",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-08-29T12:04:34+01:00",
+    "input_file": "tester.utf8.md"
+  },
+  {
     "path": "posts/welcome/",
     "title": "Welcome to Memonomics Lab",
     "description": "We are a group of Imperial College and LSE researchers using social media data to answer questions relevant to economics and current affairs.",
@@ -12,7 +28,7 @@
     "date": "2020-08-05",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-08-05T10:56:58+02:00",
-    "input_file": {}
+    "last_modified": "2020-08-29T13:14:34+01:00",
+    "input_file": "welcome.utf8.md"
   }
 ]
