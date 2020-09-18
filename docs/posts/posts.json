@@ -13,7 +13,7 @@
     "categories": [],
     "preview": {},
     "last_modified": "2020-08-29T12:04:34+01:00",
-    "input_file": "tester.utf8.md"
+    "input_file": {}
   },
   {
     "path": "posts/welcome/",
@@ -29,6 +29,6 @@
     "categories": [],
     "preview": {},
     "last_modified": "2020-08-29T13:14:34+01:00",
-    "input_file": "welcome.utf8.md"
+    "input_file": {}
   }
 ]
