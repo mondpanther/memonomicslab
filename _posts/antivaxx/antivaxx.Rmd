@@ -1,7 +1,7 @@
 ---
 title: "The evolution of co-delusion"
 description: |
-  How is anit vaxination sentiment related to covid hoaxism?
+  How is anti vaccination sentiment related to covid hoaxism?
 author:
   - name: Ralf Martin
     url: https://mondpanther.github.io/wwwmondpanther/
@@ -14,6 +14,17 @@ editor_options:
   chunk_output_type: inline
 ---
 Last update: `r format(Sys.time(), '%B %d , %Y - %H:%M ')`
+
+# Introduction
+
+It will not come as a surprise that COVID Hoaxism - i.e. delusional believes about the reality of the COVID Pandemic - are aligned with anti vaccination believes. The two believes complement each other; i.e. it will be easier - that is mentally less costly - to maintain an anti vaccination stance if a person also adopts the believe that the COVID pandemic is not really a thing or just overhyped.
+
+But how strong is the relationship? And what are the dynamics of the relationship in particular as we go through the pandemic. There could be various factors at play: individuals could revise their antivaccination believes in the face of an overwhelming pandemic that is hard to ingore.
+On the other hand, cult believes are often re-inforced by obvious clashes with reality as costs of giving up a believe might have increased; e.g. you have to admit to yourself and others that you have willfully ignored and ridiculed something that led to more than 1 million deaths. We see similar behaviour among Britains Brexit supporters.
+Finally, the incentives to stick to a particular believe will change over time. For instance, in the initial stages uncertainty and fear of the unknown might lead individuals to adopt less extreme believes. As the pandemic progresses and becomes the new normal, individual might revert back to more extreme and potentially risky believes.
+
+Besides being an interesting investigation into the workings of the human mind, exploring these issues has also potentially very practical implications: as vaccines for COVID become available the behavioural aspects that make people accept or not accept vaccination become relevant for rationing of vaccines as well as for the efficacy of vaccines.
+
 
 
 ```{r , include=FALSE}
@@ -40,14 +51,15 @@ library(fst)
 library(future.apply)
 
 
-  library(RSQLite)
-  library(lubridate)
-  library("DBI")
-  library("dplyr")
-  library("dbplyr") 
-  library(lubridate)
-  library("imputeTS")
-  library(stringr)
+library(RSQLite)
+library(lubridate)
+library("DBI")
+library("dplyr")
+library("dbplyr") 
+library(lubridate)
+library("imputeTS")
+library(stringr)
+
 ```
 
 
@@ -65,7 +77,7 @@ monthlytweets=read_fst("../../../../Corona/data/monthlytweets.fst")
 
 
 
-```{r}
+```{r,message=FALSE,echo=FALSE}
 library(zoo)
 ag_monthlytweets=monthlytweets %>% 
                  group_by(hoaxshid,month,year)         %>% 
@@ -86,8 +98,20 @@ ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
                  mutate(   yearmonth=as.yearmon(
                    paste0(as.character(year),"-",as.character(month)) ))
 
+allallMM=round(sum(all_monthlytweets$tweets)/10^6,0)
                  
 ```
+
+
+
+
+# Data
+
+To make progress on these things we have started to develop an index of antivaccination sentiment based on twitter data. Our current database comprises of over `r allallMM` million tweets which we sampled via the twitter API by searching for tweets mentioning `covid` or `corona`, from more than 10 million twitter users.
+<br>
+We classify tweets as antivaxx tweets if they contain one of the following hastags: 
+
+
 
 
 ```{r}
@@ -122,7 +146,7 @@ p
 ```
 
 
-```{r, message=FALSE}
+```{r, message=FALSE,echo=FALSE}
 library(dygraphs)
 library(xts)
 
@@ -149,4 +173,16 @@ dygraph(tsf,main = "Share of Hoaxtweets in %") %>%
 
 ```
 
+```{r,echo=FALSE,eval=FALSE}
+
+agag_monthlytweets=ag_monthlytweets %>%group_by(yearmonth) %>% summarise(tweets=sum(tweets))
+p=agag_monthlytweets %>% ggplot( 
+       aes(x=yearmonth, y=tweets  )) + 
+       geom_line() +
+       xlab("Month") +
+       ylab("Tweets") + theme_minimal() 
+
+p
+
+```
 
