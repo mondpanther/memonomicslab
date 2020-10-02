@@ -1,0 +1,152 @@
+---
+title: "The evolution of co-delusion"
+description: |
+  How is anit vaxination sentiment related to covid hoaxism?
+author:
+  - name: Ralf Martin
+    url: https://mondpanther.github.io/wwwmondpanther/
+    #affiliation: Spacely Sprockets
+    #affiliation_url: https://example.com/spacelysprokets
+output:
+  distill::distill_article:
+    self_contained: false
+editor_options: 
+  chunk_output_type: inline
+---
+Last update: `r format(Sys.time(), '%B %d , %Y - %H:%M ')`
+
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating blogs with Distill at:
+# https://rstudio.github.io/distill/blog.html
+
+```
+
+
+
+```{r , include=FALSE}
+
+
+
+library(rtweet)
+library(tidytext)
+
+# plotting and pipes - tidyverse!
+library(ggplot2)
+library(dplyr)
+library(fst)
+library(future.apply)
+
+
+  library(RSQLite)
+  library(lubridate)
+  library("DBI")
+  library("dplyr")
+  library("dbplyr") 
+  library(lubridate)
+  library("imputeTS")
+  library(stringr)
+```
+
+
+
+```{r}
+#download.file('https://www.dropbox.com/s/bzmdyyou97gdl97/monthlytweets.fst?raw=1',
+#              destfile="test.fst",
+#              method="auto")
+
+
+monthlytweets=read_fst("../../../../Corona/data/monthlytweets.fst")
+
+  
+```
+
+
+
+```{r}
+library(zoo)
+ag_monthlytweets=monthlytweets %>% 
+                 group_by(hoaxshid,month,year)         %>% 
+                 summarise_at(vars(avaxid,tweets),sum) %>%
+                 mutate(avaxsh=avaxid/tweets*100)
+
+all_monthlytweets=monthlytweets %>% 
+                 group_by(hoaxshid)         %>% 
+                 summarise_at(vars(avaxid,tweets),sum) %>%
+                 mutate(avaxsh=avaxid/tweets*100)
+
+
+ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
+                 filter(year>2018) %>% 
+                 mutate(month=as.character(month),
+                        month=ifelse(str_length(month)==1, paste0("0",month), month)
+                 )   %>%
+                 mutate(   yearmonth=as.yearmon(
+                   paste0(as.character(year),"-",as.character(month)) ))
+
+                 
+```
+
+
+```{r}
+
+#ggplot(monthlytweets ,
+#       aes(x=hoaxshid   ,fill=hoaxshid)) + 
+#       geom_bar()
+
+
+p=ggplot(all_monthlytweets ,
+       aes(x=hoaxshid, y=avaxsh  ,fill=hoaxshid)) + 
+       geom_bar(stat = "identity") +
+       xlab("Hoaxer") +
+       ylab("Share of Antivaxxers %") + theme_minimal() +theme(legend.position = "none")
+
+p
+```
+
+
+
+```{r,eval=FALSE}
+
+
+p=ag_monthlytweets %>% ggplot( 
+       aes(x=yearmonth, y=avaxsh  ,color=hoaxshid)) + 
+       geom_line() +
+       xlab("Month") +
+       ylab("Share of Antivaxxers %") + theme_minimal() 
+
+p
+
+```
+
+
+```{r, message=FALSE}
+library(dygraphs)
+library(xts)
+
+hoax=ag_monthlytweets %>% filter(hoaxshid==TRUE)
+nonhoax=ag_monthlytweets %>% filter(hoaxshid==FALSE)
+
+tsf_hoax <- xts(x=hoax$avaxsh , order.by=hoax$yearmonth)
+tsf_nonhoax <- xts(x=nonhoax$avaxsh, order.by=hoax$yearmonth)
+
+
+library(dygraphs)
+
+
+
+tsf <- cbind(tsf_hoax, tsf_nonhoax)
+dygraph(tsf,main = "Share of Hoaxtweets in %") %>%  
+   dySeries("tsf_hoax", label = "COVID Hoaxers") %>%
+   dySeries("tsf_nonhoax", label = "Non Hoaxers") %>%
+   dyRangeSelector(height = 20) 
+
+
+
+
+
+```
+
+

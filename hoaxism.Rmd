@@ -1,7 +1,6 @@
 ---
 title: "Infections of the body and the mind"
 output: html_document
-css:    mondstyle.css
 editor_options: 
   chunk_output_type: inline
 chunk_output_type: inline

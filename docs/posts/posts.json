@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/antivaxx/",
+    "title": "The evolution of co-delusion",
+    "description": "How is anit vaxination sentiment related to covid hoaxism?",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2020-10-02",
+    "categories": [],
+    "preview": "posts/antivaxx/antivaxx_files/figure-html5/unnamed-chunk-4-1.png",
+    "last_modified": "2020-10-02T12:31:21+01:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/",
     "title": "Hoaxism is still going strong",
     "description": "A new article created using the Distill format.",
@@ -13,7 +29,7 @@
     "categories": [],
     "preview": {},
     "last_modified": "2020-09-18T15:17:59+01:00",
-    "input_file": "tester.utf8.md"
+    "input_file": {}
   },
   {
     "path": "posts/welcome/",
