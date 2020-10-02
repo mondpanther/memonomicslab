@@ -88,7 +88,7 @@ How bad is the hoax infection and is it getting better or worse? To identify twe
 Using hashtags instead of string searches of the same terms provides a good distinction between tweets who display support for hoaxsim vs tweets criticising hoaxism. Note that this is likely a conservative way of counting hoaxist tweets and in reality a larger fraction of tweets are from people supporting hoaxist ideas.
 
 Below is a time series plot of the share of hoaxist tweets over our sample period.^[ Data is
-[here](https://mondpanther.github.io/memonomics.github.io/data/hoaxshare_over_time.csv)]
+[here](https://mondpanther.github.io/memonomicslab/data/hoaxshare_over_time.csv)]
  we report separate series for the US and UK. Assigning location to tweets is notoriously difficult as most users have switch off detailed location tracking. In the figure below we base location on the analysis of a free text field where users can write something about their whereabouts. In many cases this refers to known areas although the detail varies (e.g. London, UK vs the Universe). Often it also involves phantasy locations (e.g. Walhalla). Hence, our "other" category might include tweeters from either the UK or Us who have chosen not to reveal their location.
 
 
