@@ -1,9 +1,10 @@
 ---
 title: "Infections of the body and the mind"
-output: html_document
+output:
+  distill::distill_article:
+    self_contained: false
 editor_options: 
   chunk_output_type: inline
-chunk_output_type: inline
 ---
 
 **by [Julio Amador Diaz Lopez](https://www.imperial.ac.uk/people/j.amador)^[Imperial College Business School], [Ralf Martin](https://www.imperial.ac.uk/people/r.martin)^[Imperial College Business School  & Centre for Economic Perforamnce, LSE], Laure de Preux, Andre Veiga** 
@@ -92,11 +93,11 @@ Below is a time series plot of the share of hoaxist tweets over our sample perio
 
 
 
-```{r tsplot,echo=FALSE}
+```{r tsplot,echo=FALSE,message=FALSE}
 scomb=scomb%>% group_by(country) %>% arrange(country,date) %>% mutate(cumtweets=cumsum(tweets),cumigtweets=cumsum(igtweets),cumhoaxsh=cumigtweets/cumtweets,hoaxsh=igtweets/tweets)
 
 
-names(scomb)
+#names(scomb)
 
 
 library(lubridate)
@@ -119,7 +120,9 @@ scombw=scomb %>% filter(is.na(week)==FALSE) %>% group_by(country,week)%>%
 
 
 ```
+
 ## Daily share of hoax tweets in total covid related tweets
+
 ```{r plot daily,echo=FALSE}
 
 library(scales)
