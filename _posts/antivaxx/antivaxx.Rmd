@@ -94,11 +94,22 @@ all_monthlytweets=monthlytweets %>%
                  summarise_at(vars(avaxid,tweets),sum) %>%
                  mutate(avaxsh=avaxid/tweets*100)
 
+library(dtplyr)
+monthlytweets=lazy_dt(monthlytweets)
+cross=monthlytweets%>% select( user_id,  avaxid,  usid,
+                  englandid,
+                  walesid,scotlandid,ukotherid) %>% group_by(user_id) %>%
+      summarise_all(max)  %>% collect()
 
-rr1=lm(avaxid~usid+ukotherid+englandid+walesid+scotlandid+
-              usid+ukotherid+englandid+walesid+scotlandid
-            ,monthlytweets)
-rr1 %>% summary()
+
+
+
+
+
+
+monthlytweets%>%summarise(across(c(usid,englandid,walesid,scotlandid,ukotherid),sum))
+
+
 
 ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
                  filter(year>2018) %>% 
@@ -197,6 +208,18 @@ p
 ```
 
 
+How do things vary?
+
+```{r}
+
+rr1=lm(avaxid~usid+ukotherid+englandid+walesid+scotlandid)  ,cross)
+rr1 %>% summary()
+
+
+shares=cross %>%  select(lazy_dt())
+
+
+```
 
 
 
