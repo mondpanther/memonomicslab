@@ -1,5 +1,5 @@
 ---
-title: "The evolution of co-delusion"
+title: "The co-evolution of delusion"
 description: |
   How is anti vaccination sentiment related to covid hoaxism?
 author:
@@ -72,9 +72,14 @@ library(stringr)
 
 monthlytweets=read_fst("../../../../Corona/data/monthlytweets.fst")
 
-  
-```
+#see http://www.rebeccabarter.com/blog/2020-07-09-across/
+library(tidyr)
+monthlytweets=monthlytweets  %>% 
+  mutate(
+    across(c(usid,englandid,walesid,scotlandid,ukotherid), ~replace_na(.x, F))
+  )
 
+```
 
 
 ```{r,message=FALSE,echo=FALSE}
@@ -89,6 +94,11 @@ all_monthlytweets=monthlytweets %>%
                  summarise_at(vars(avaxid,tweets),sum) %>%
                  mutate(avaxsh=avaxid/tweets*100)
 
+
+rr1=lm(avaxid~usid+ukotherid+englandid+walesid+scotlandid+
+              usid+ukotherid+englandid+walesid+scotlandid
+            ,monthlytweets)
+rr1 %>% summary()
 
 ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
                  filter(year>2018) %>% 
@@ -185,4 +195,9 @@ p=agag_monthlytweets %>% ggplot(
 p
 
 ```
+
+
+
+
+
 
