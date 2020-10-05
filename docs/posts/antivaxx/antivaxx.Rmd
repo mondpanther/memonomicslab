@@ -1,17 +1,17 @@
 ---
-title: "The evolution of co-delusion"
+title: "The co-evolution of delusion"
 description: |
   How is anti vaccination sentiment related to covid hoaxism?
 author:
   - name: Ralf Martin
     url: https://mondpanther.github.io/wwwmondpanther/
-    #affiliation: Spacely Sprockets
-    #affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
 output:
   distill::distill_article:
-    self_contained: false
+    self_contained: true
 editor_options: 
   chunk_output_type: inline
+citation_url: https://mondpanther.github.io/memonomicslab/posts/antivaxx/  
 ---
 Last update: `r format(Sys.time(), '%B %d , %Y - %H:%M ')`
 
@@ -19,7 +19,7 @@ Last update: `r format(Sys.time(), '%B %d , %Y - %H:%M ')`
 
 It will not come as a surprise that COVID Hoaxism - i.e. delusional believes about the reality of the COVID Pandemic - are aligned with anti vaccination believes. The two believes complement each other; i.e. it will be easier - that is mentally less costly - to maintain an anti vaccination stance if a person also adopts the believe that the COVID pandemic is not really a thing or just overhyped.
 
-But how strong is the relationship? And what are the dynamics of the relationship in particular as we go through the pandemic. There could be various factors at play: individuals could revise their antivaccination believes in the face of an overwhelming pandemic that is hard to ingore.
+But how strong is the relationship? And what are the dynamics of the relationship in particular as we go through the pandemic? There could be various factors at play: individuals could revise their antivaccination believes in the face of an overwhelming pandemic that is hard to ingore.
 On the other hand, cult believes are often re-inforced by obvious clashes with reality as costs of giving up a believe might have increased; e.g. you have to admit to yourself and others that you have willfully ignored and ridiculed something that led to more than 1 million deaths. We see similar behaviour among Britains Brexit supporters.
 Finally, the incentives to stick to a particular believe will change over time. For instance, in the initial stages uncertainty and fear of the unknown might lead individuals to adopt less extreme believes. As the pandemic progresses and becomes the new normal, individual might revert back to more extreme and potentially risky believes.
 
@@ -72,22 +72,66 @@ library(stringr)
 
 monthlytweets=read_fst("../../../../Corona/data/monthlytweets.fst")
 
-  
-```
+#see http://www.rebeccabarter.com/blog/2020-07-09-across/
 
+monthlytweets=monthlytweets %>% filter(!(year>=2020 & month>=10))
+
+
+library(tidyr)
+monthlytweets=monthlytweets  %>% mutate(LOC_ukother=replace_na(LOC_ukother, 0))  
+
+```
 
 
 ```{r,message=FALSE,echo=FALSE}
 library(zoo)
+
 ag_monthlytweets=monthlytweets %>% 
                  group_by(hoaxshid,month,year)         %>% 
                  summarise_at(vars(avaxid,tweets),sum) %>%
                  mutate(avaxsh=avaxid/tweets*100)
 
+
 all_monthlytweets=monthlytweets %>% 
                  group_by(hoaxshid)         %>% 
                  summarise_at(vars(avaxid,tweets),sum) %>%
                  mutate(avaxsh=avaxid/tweets*100)
+
+library(dtplyr)
+#test=monthlytweets %>% filter(LOC_ukother==1) %>% collect()
+#monthlytweets=lazy_dt(monthlytweets)
+
+
+#all_monthlytweets$avaxsh[2]/all_monthlytweets$avaxsh[1]
+
+
+monthlytweets=monthlytweets %>% mutate(geo="Not assigned",
+                       geo=ifelse(LOC_us==1,"US" ,geo),
+                       geo=ifelse(LOC_ukother==1 , "UK, not further assigned",geo),
+                       geo=ifelse(LOC_england==1 ,"England",geo),
+                       geo=ifelse(LOC_scotland==1,"Scotland",geo),
+                       geo=ifelse(LOC_wales==1   ,"Wales",geo))
+
+
+
+#nrow(monthlytweets %>% filter(LOC_ukother==1))
+#monthlytweets %>%group_by(geo) %>% summarise(n())
+
+#cross=monthlytweets%>% select(user_id,   avaxid,  starts_with("LOC_")) %>%
+#      group_by(user_id) %>%
+#      summarise_all(max)  %>% collect()
+
+
+
+
+
+
+
+#monthlytweets%>%summarise(across(c(usid,englandid,walesid,scotlandid,ukotherid),sum))
+
+```
+
+```{r,eoch=F,message=F}
 
 
 ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
@@ -100,21 +144,45 @@ ag_monthlytweets=ag_monthlytweets %>% ungroup() %>%
 
 allallMM=round(sum(all_monthlytweets$tweets)/10^6,0)
                  
+allusers=nrow(monthlytweets %>% select(user_id) %>% unique())
 ```
 
 
 
 
+```{r,echo=FALSE,eval=FALSE}
+
+agag_monthlytweets=ag_monthlytweets%>% mutate(gg=(yearmonth)) %>%
+                              group_by(gg) %>% dplyr::summarise(tweets=sum(tweets)) %>% ungroup()
+
+p=agag_monthlytweets %>% 
+    ggplot( 
+       aes(x=gg, y=tweets  )) + 
+       geom_line() +
+       xlab("Month") +
+       ylab("Tweets") + theme_minimal() 
+
+p
+
+```
+
+
 # Data
 
-To make progress on these things we have started to develop an index of antivaccination sentiment based on twitter data. Our current database comprises of over `r allallMM` million tweets which we sampled via the twitter API by searching for tweets mentioning `covid` or `corona`. From more than 10 million twitter users
+To make progress on these things we have started to develop an index of antivaccination sentiment based on twitter data. Our current database comprises of over `r allallMM` million tweets which we sampled via the twitter API by searching for tweets mentioning `covid` or `corona`, from more `r format(round(allusers,0),scientific=F)` million twitter users.
 <br>
-We classify 
+We classify tweets as antivaxx tweets if they contain one of the following hastags: 
+`#antivax`, `#vaccinedamage`, `#vaccineinjury`, `#billgatesevil`, `#billgatesterrorist`
+This was based on a manual screening of a variety of tweets expressing antivax messages. In future research we will refine this.
+Similarly, we identify COVID hoaxism by tweets with the hastags `#covidhoax` or `#coronahoax`. We define a twitter account as a COVID hoaxer if they have posted (including retweets) at least on hoaxist tweet in our sample.
 
 
+# Results
+
+The figure below reports the percentage share of antivaxx tweets in total (covid related) tweets separately for COVID hoaxers and non hoaxers. Overall, the share of antivax sentiment is low (less than 0.02%). However, as expected we see that hoaxists are several orders of magnitudes considerably (more than 30 times) more likely to also express antivax sentiment.
 
 
-```{r}
+```{r,fig.cap = "Anti vaxx sentinment by COVID hoaxism stance"}
 
 #ggplot(monthlytweets ,
 #       aes(x=hoaxshid   ,fill=hoaxshid)) + 
@@ -146,10 +214,16 @@ p
 ```
 
 
-```{r, message=FALSE,echo=FALSE}
+Figure \@ref(fig:overtime) exmines how antivax sentiment has changed over the last 2 years. There is evidence for a certian seasonality of antivaxx sentiment with spikes early in the year and after summer (possibly coninciding with school openings that are linked to vaccination programmes).
+However, it would appear that the onset of the pandemic in spring 2020 pandemic let to a record low for antivax sentiment for both hoaxer and non-hoaxers. It is still too early to fully assess the winter spike this year but at the very least it comes with some delay compared to last year. 
+
+
+```{r overtime,fig.cap="Antivaxx sentiment over time", message=FALSE,echo=FALSE}
 library(dygraphs)
 library(xts)
 
+ag_monthlytweets=mutate(ag_monthlytweets,
+                        avaxsh=format(round(avaxsh,4),scientific = F))
 hoax=ag_monthlytweets %>% filter(hoaxshid==TRUE)
 nonhoax=ag_monthlytweets %>% filter(hoaxshid==FALSE)
 
@@ -162,27 +236,79 @@ library(dygraphs)
 
 
 tsf <- cbind(tsf_hoax, tsf_nonhoax)
-dygraph(tsf,main = "Share of Hoaxtweets in %") %>%  
-   dySeries("tsf_hoax", label = "COVID Hoaxers") %>%
-   dySeries("tsf_nonhoax", label = "Non Hoaxers") %>%
+dygraph(tsf,main = "Share of Antivaxx Tweets in %") %>%  
+   dySeries("tsf_hoax",    label = "COVID Hoaxers") %>%
+   dySeries("tsf_nonhoax", label = "Non Hoaxers",axis = 'y2') %>%
+   dyAxis("y", label = "Hoaxers") %>% 
+   dyAxis("y", label = "Non Hoaxers",independentTicks = TRUE) %>%
    dyRangeSelector(height = 20) 
 
+```
 
+
+
+
+How does anti vaxx sentiment vary between different countries? To address this we first need to assign geography to twitter posts which is not a trivial task. While Twitter is able to trace a users Smart Phone GPS information, in practice most twitter users have not switchted this feature on (opt out is the default). However, it is possible to train machine learning algorithms on the small number of users allowing this feature to assign geographic location to a much larger sample. We are currently conducting this analysis but it is still ongoing. In the meantime,a quick way to assign location to at least some tweets, can be done by searching for country related strings (`GB`, `UK`, `US`, `England`, `Blighty`) in a user defined `location` free text field. With this approach we managed to assign location about 12% of our tweet sample in the US or one of the constitutent countries of the UK (not yet NI). The Figure \@ref(fig:pie) shows the distribution of tweet assignments to countries:
+
+
+
+```{r pie, fig.cap="Tweets assigned to countries",fig.width = 3}
+
+
+library(highcharter)
+#library(plyr)
+library(dplyr)
+
+
+ag_geo     =monthlytweets %>% filter(year>1018) %>% 
+            group_by(geo) %>%
+            dplyr::summarise_at(vars(tweets,avaxid),sum) %>% 
+            mutate(avaxsh=avaxid/tweets*100,hoaxid="overall")
+
+ag_geo_hoax=monthlytweets %>% filter(year>1018 & hoaxshid==TRUE) %>% group_by(geo) %>%
+       dplyr::summarise_at(vars(tweets,avaxid),sum) %>%
+       mutate(avaxsh=avaxid/tweets*100,hoaxid="COVID Hoaxers")
+
+ag_geo_nonhoax=monthlytweets %>% filter(year>1018 & hoaxshid==FALSE) %>% 
+               group_by(geo) %>%
+               dplyr::summarise_at(vars(tweets,avaxid),sum) %>%
+               mutate(avaxsh=avaxid/tweets*100,hoaxid="non COVID Hoaxers") 
+
+ag_geo_long=bind_rows(ag_geo,ag_geo_hoax,ag_geo_nonhoax)
+#sum(ag_geo$tweets)
+
+
+ag_geo=ag_geo %>% mutate(tweetsh=tweets/sum(tweets))
+
+highchart() %>% 
+   hc_add_series( ag_geo,type="pie",hcaes(x=geo,y=tweets,z=avaxsh)) %>%
+   hc_xAxis(categories = ag_geo$geo)
+
+
+```
+
+
+
+
+Figure \@ref(fig:countrybar) reports antivaxx sentiment by country and hoxism stance. This suggests that antivaxx sentiment overall is within the UK highest in Scotland  and lowest in Wales. 
+Interestingly, the ranking UK countries is the same for both hoaxers and non hoaxers. It is also striking that antivaxx sentiment in the UK generally (with the excpetion of Wales) is much higher than for the US or indeed other world regions (which are included in the `NOt assigned` category). 
+
+
+
+```{r countrybar,fig.cap = "Anti vaxx sentiment for different countries",fig.width = 5}
+
+
+
+
+# bar chart
+highchart() %>% hc_add_series(ag_geo_long, type = "bar", 
+                              hcaes(x = geo, group = hoaxid, y = avaxsh)) %>% 
+              hc_xAxis(categories = ag_geo_long$geo)
 
 
 
 ```
 
-```{r,echo=FALSE,eval=FALSE}
 
-agag_monthlytweets=ag_monthlytweets %>%group_by(yearmonth) %>% summarise(tweets=sum(tweets))
-p=agag_monthlytweets %>% ggplot( 
-       aes(x=yearmonth, y=tweets  )) + 
-       geom_line() +
-       xlab("Month") +
-       ylab("Tweets") + theme_minimal() 
 
-p
-
-```
 

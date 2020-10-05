@@ -1,5 +1,21 @@
 [
   {
+    "path": "posts/antivaxx/",
+    "title": "The co-evolution of delusion",
+    "description": "How is anti vaccination sentiment related to covid hoaxism?",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2020-10-05",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-10-05T21:53:05+01:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/",
     "title": "Hoaxism is still going strong",
     "description": "Despite - or maybe because - the ongoing pandemic hoaxists are still sticking to their believes. It's also one thing Britain might be world beating.",
@@ -9,42 +25,21 @@
         "url": "https://mondpanther.github.io/wwwmondpanther/"
       }
     ],
-    "date": "2020-10-02",
+    "date": "2020-10-05",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-10-02T14:37:32+01:00",
-    "input_file": "tester.utf8.md"
-  },
-  {
-    "path": "posts/antivaxx/",
-    "title": "The evolution of co-delusion",
-    "description": "How is anti vaccination sentiment related to covid hoaxism?",
-    "author": [
-      {
-        "name": "Ralf Martin",
-        "url": "https://mondpanther.github.io/wwwmondpanther/"
-      }
-    ],
-    "date": "2020-10-02",
-    "categories": [],
-    "preview": "posts/antivaxx/antivaxx_files/figure-html5/unnamed-chunk-5-1.png",
-    "last_modified": "2020-10-02T14:38:25+01:00",
-    "input_file": "antivaxx.utf8.md"
+    "last_modified": "2020-10-05T21:41:03+01:00",
+    "input_file": {}
   },
   {
     "path": "posts/welcome/",
     "title": "Welcome to Memonomics Lab",
     "description": "We are a group of Imperial College and LSE researchers using social media data to answer questions relevant to economics and current affairs.",
-    "author": [
-      {
-        "name": "Ralf Martin",
-        "url": "https://mondpanther.github.io/wwwmondpanther/"
-      }
-    ],
-    "date": "2020-08-05",
+    "author": [],
+    "date": "2020-10-04",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-08-29T13:14:34+01:00",
+    "last_modified": "2020-10-04T13:47:06+01:00",
     "input_file": {}
   }
 ]

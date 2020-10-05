@@ -33,13 +33,15 @@ ntweets= round(sum(scomb$tweets) /10^6,2)
 
 ```
 
-Since March we have been sampling tweets related to the pandemic. We explore how many display hoaxist views by looking at certain hastags. On the basis of `r ntweets` mentioning the terms `covid` or `corona` we find that hoaxism has not lost it's appeal despite the number of deaths reaching now more than one million. In fact, it might well be that like many other cults the appeal or incentives to participate increase when the tennents of the cult are clashing particularly hard with reality. For many there could also be an economic rationale: for instance, believing in hoaxism might make it easier to continue work and other economic activities, ignoring caution. We see this at play in borderline or full blown hoaxist politicians like Donald Trump and Boris Johnson.
+Since March we have been sampling tweets related to the pandemic. We explore how many display hoaxist views by looking at certain hastags. On the basis of `r ntweets` million tweets mentioning the terms `covid` or `corona` we find that hoaxism has not lost it's appeal despite the number of deaths reaching now more than one million. In fact, it might well be that like many other cults the appeal or incentives to participate increase when the tennents of the cult are clashing particularly hard with reality. For many there could also be an economic rationale: for instance, believing in hoaxism might make it easier to continue work and other economic activities, ignoring caution. We see this at play in borderline or full blown hoaxist politicians like Donald Trump and Boris Johnson.
 <br>
 Speaking of Johnson who always seems notorously obsessed with British superiority. He might be pleased to know that the UK seems to have overtaken the US when it comes to our cumulative index of hoaxism:
 
 ![](https://mondpanther.github.io/memonomicslab/hoaxism_files/figure-html5/plot%20cumulative-1.png)
 
-Our latest results suggest that at least abou 0.4% of UK COVID related tweets express hoaxist ideas, whereas for the rest of the world it is below 0.35%.
+
+Interestingly, there is has been a dramatic increase in hoaxist sentiment. This would appear to have been a response to new restrictions that have been introduced by the [UK government](https://www.gov.uk/government/news/coronavirus-covid-19-what-has-changed-9-) in mid September.
+
 
 
 

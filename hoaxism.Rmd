@@ -5,6 +5,7 @@ output:
     self_contained: false
 editor_options: 
   chunk_output_type: inline
+citation_url: https://mondpanther.github.io/memonomicslab/hoaxism.html
 ---
 
 **by [Julio Amador Diaz Lopez](https://www.imperial.ac.uk/people/j.amador)^[Imperial College Business School], [Ralf Martin](https://www.imperial.ac.uk/people/r.martin)^[Imperial College Business School  & Centre for Economic Perforamnce, LSE], Laure de Preux, Andre Veiga** 

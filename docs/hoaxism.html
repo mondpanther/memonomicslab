@@ -38,7 +38,7 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["Infections of the body and the mind"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["inline"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","editor_options","citation_url"]}},"value":[{"type":"character","attributes":{},"value":["Infections of the body and the mind"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["inline"]}]},{"type":"character","attributes":{},"value":["https://mondpanther.github.io/memonomicslab/hoaxism.html"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1275,8 +1275,53 @@
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+  <style type="text/css">
+  .distill-site-nav {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #2e19cf;
+    font-family: "Palatino Linotype";
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .distill-site-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .distill-site-nav a:hover {
+    color: white;
+  }
+
+  .distill-site-header {
+    font-family: "Palatino Linotype";
+  }
+
+  .distill-site-footer {
+  }
+
+  @media print {
+    .distill-site-nav {
+      display: none;
+    }
+  }
+
+
+  /* Whole document: */
+  body{
+    font-family: "Palatino Linotype";
+    font-size: 12pt;
+  }
+  /* Headers */
+  h1,h2,h3,h4,h5,h6{
+    font-family: "Palatino Linotype";  
+    font-size: 24pt;
+    color: darkblue;
+  }
+  </style>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="memonomics.css" type="text/css"/>
 
 </head>
 
@@ -1326,8 +1371,8 @@
     gtag('config', 'UA-3928947-4');
   </script>
 
-<p>Last update: October 02 , 2020 - 14:35</p>
-<p>The coronavirus pandemic has changed everything overnight. Unfortunately, as the genetic sequence of the virus started to make its deadly journey through bodies around the world, in parallel a memetic sequence emerged in the minds of some people: the idea that COVID19 pandemic is not real and a hoax. Indeed, the worry is that the two infections exist in a symbiotic relationship with one helping to advance the survival and spread of the other. Here we report on our ongoing efforts to map the spread of memetic infection using Twitter. Since March 23 we have been sampling tweets mentioning the terms “corona” and/or “covid”. We have also been sampling timelines of twitter users tweeting about these terms allowing us to go back further in time. Currently, we have collected 46.79 million tweets.</p>
+<p>Last update: October 05 , 2020 - 21:56</p>
+<p>The coronavirus pandemic has changed everything overnight. Unfortunately, as the genetic sequence of the virus started to make its deadly journey through bodies around the world, in parallel a memetic sequence emerged in the minds of some people: the idea that COVID19 pandemic is not real and a hoax. Indeed, the worry is that the two infections exist in a symbiotic relationship with one helping to advance the survival and spread of the other. Here we report on our ongoing efforts to map the spread of memetic infection using Twitter. Since March 23 we have been sampling tweets mentioning the terms “corona” and/or “covid”. We have also been sampling timelines of twitter users tweeting about these terms allowing us to go back further in time. Currently, we have collected 53.52 million tweets.</p>
 <p>How bad is the hoax infection and is it getting better or worse? To identify tweeters believing in the hoax (or promoting the hoax idea) we look for tweets with one of the following hastags:</p>
 <ul>
 <li>“#hoax”</li>

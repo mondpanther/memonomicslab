@@ -12,7 +12,8 @@ navbar:
       href: about.html
     - text: "Projects"
       href: projects.html
+base_url: https://mondpanther.github.io/memonomicslab/      
 output:
   distill::distill_article:
     theme: flatly
-    
+    css: memonomics.css
