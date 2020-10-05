@@ -240,7 +240,7 @@ dygraph(tsf,main = "Share of Antivaxx Tweets in %") %>%
    dySeries("tsf_hoax",    label = "COVID Hoaxers") %>%
    dySeries("tsf_nonhoax", label = "Non Hoaxers",axis = 'y2') %>%
    dyAxis("y", label = "Hoaxers") %>% 
-   dyAxis("y", label = "Non Hoaxers",independentTicks = TRUE) %>%
+   dyAxis("y2", label = "Non Hoaxers",independentTicks = TRUE) %>%
    dyRangeSelector(height = 20) 
 
 ```
