@@ -40,7 +40,7 @@ Speaking of Johnson who always seems notorously obsessed with British superiorit
 ![](https://mondpanther.github.io/memonomicslab/hoaxism_files/figure-html5/plot%20cumulative-1.png)
 
 
-Interestingly, there is has been a dramatic increase in hoaxist sentiment. This would appear to have been a response to new restrictions that have been introduced by the [UK government](https://www.gov.uk/government/news/coronavirus-covid-19-what-has-changed-9-) in mid September.
+Interestingly, there is has been a dramatic increase in hoaxist sentiment towards the end of our sample. This would appear to have been a response to new restrictions that have been introduced by the [UK government](https://www.gov.uk/government/news/coronavirus-covid-19-what-has-changed-9-) in mid September.
 
 
 

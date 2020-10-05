@@ -1,21 +1,5 @@
 [
   {
-    "path": "posts/",
-    "title": "Hoaxism is still going strong",
-    "description": "Despite - or maybe because - the ongoing pandemic hoaxists are still sticking to their believes. It's also one thing Britain might be world beating.",
-    "author": [
-      {
-        "name": "Ralf Martin",
-        "url": "https://mondpanther.github.io/wwwmondpanther/"
-      }
-    ],
-    "date": "2020-10-05",
-    "categories": [],
-    "preview": {},
-    "last_modified": "2020-10-05T21:41:03+01:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/antivaxx/",
     "title": "The co-evolution of delusion",
     "description": "How is anti vaccination sentiment related to covid hoaxism?",
@@ -30,6 +14,22 @@
     "preview": {},
     "last_modified": "2020-10-05T22:05:16+01:00",
     "input_file": "antivaxx.utf8.md"
+  },
+  {
+    "path": "posts/",
+    "title": "Hoaxism is still going strong",
+    "description": "Despite - or maybe because - the ongoing pandemic hoaxists are still sticking to their believes. It's also one thing Britain might be world beating.",
+    "author": [
+      {
+        "name": "Ralf Martin",
+        "url": "https://mondpanther.github.io/wwwmondpanther/"
+      }
+    ],
+    "date": "2020-10-05",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-10-05T22:06:36+01:00",
+    "input_file": "tester.utf8.md"
   },
   {
     "path": "posts/welcome/",
